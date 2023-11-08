@@ -1,10 +1,14 @@
 const express = require("express");
 const app = express();
-const userController = require("./Controller/userController")
+const userController = require("./Controller/userController");
+const userRouter = require("./Router/userRouter");
 const port = 3000;
+app.use(express.json());
+app.use("/api",userRouter)
 
 console.log("Error",userController)
-app.get("/user",userController.getUser)
+
+
 
 app.listen(port, (err) => {
   if (err) {

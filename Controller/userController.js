@@ -1,16 +1,24 @@
 async function getUser(req, res) {
   try {
-    res.send(
-     "Successufully get user",
-      
-    );
+    res.send("Successufully get user");
   } catch (err) {
     console.log("Error", err);
-    res.send(
-       "Not getting user",
-     
-    );
+    res.send("Not getting user");
   }
 }
 
-module.exports = { getUser };
+async function createUser(req, res) {
+  try {
+    console.log(req.body);
+    const {name,mobile} = req.body;
+    res.json({
+      msg: "user Created successully",
+      status: 200,
+      user:{name,mobile}
+    });
+  } catch (err) {
+    console.log("Error", err);
+  }
+}
+
+module.exports = { getUser, createUser };
